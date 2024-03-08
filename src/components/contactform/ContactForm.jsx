@@ -1,0 +1,53 @@
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import css from "./ContactForm.module.css"
+
+const ContactForm = ({ addContact }) => {
+  const initialValues = {
+    name: "",
+    number: ""
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .required("Name is required")
+      .min(2, "Name is too short!")
+      .max(50, "Name must be less than 50 characters"),
+    number: Yup.string()
+      .required('Number is required')
+      .min(3, "Number is too short!")
+      .max(15, "Number must be less than 15 characters")
+  });
+
+  const onSubmit = (values, { resetForm }) => {
+    addContact(values);
+    resetForm();
+  };
+
+  return (
+    <div className={css.contactform}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={onSubmit}
+      >
+        <Form className={css.forma}>
+          <div className={css.form}>
+            <label htmlFor="name" className={css.paragraf}>Name</label>
+            <Field type="text" id="name" name="name" className={css.addtext} />
+            <ErrorMessage name="name" component="div" className="error" />
+          </div>
+          <div className={css.form}>
+            <label htmlFor="number" className={css.paragraf}>Number</label>
+            <Field type="text" id="number" name="number" className={css.addtext} />
+            <ErrorMessage name="number" component="div" className="error" />
+          </div>
+          <button className={css.addbutton}>Add Contact</button>
+        </Form>
+      </Formik>
+    </div>
+  );
+};
+
+export default ContactForm;

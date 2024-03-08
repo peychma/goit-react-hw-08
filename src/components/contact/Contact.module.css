@@ -1,0 +1,21 @@
+.contact {
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(20, 20, 20);
+    padding: 4px 20px;
+    flex: 0 0 230px;
+}
+.contactparagraf {
+    margin: 0;
+    text-align: left;
+    font-size: 16px;
+}
+.deletebutton {
+    margin: 0;
+    padding: 8px 20px;
+}
+.deletebutton:hover {
+    background-color: gray;
+    color: black;
+    border: 1px solid white;
+}

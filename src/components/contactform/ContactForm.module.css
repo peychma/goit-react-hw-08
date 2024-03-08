@@ -1,0 +1,37 @@
+.contactform {
+    padding: 10px 20px;
+    border: 1px solid  gray;
+    border-radius: 5px;
+    max-width: 280px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+.addbutton {
+    width: 150px;
+    margin-top: 10px;
+}
+.addbutton:hover {
+    background-color: gray;
+    color: black;
+    border: 1px solid white;
+}
+.addtext {
+    padding: 8px 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: rgb(30, 30, 30);
+}
+.paragraf {
+    font-size: 16px;
+    text-align: left;
+}
+.forma{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
