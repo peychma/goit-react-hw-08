@@ -1,9 +1,15 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import css from "./ContactForm.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { addContact } from "../../redux/contactsSlice";
 
-const ContactForm = ({ addContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch();
+  const contacts = useSelector(state => state.contacts);
+  const [errorMessage, setErrorMessage] = useState("");
+
   const initialValues = {
     name: "",
     number: ""
@@ -15,13 +21,18 @@ const ContactForm = ({ addContact }) => {
       .min(2, "Name is too short!")
       .max(50, "Name must be less than 50 characters"),
     number: Yup.string()
-      .required('Number is required')
+      .required("Number is required")
       .min(3, "Number is too short!")
       .max(15, "Number must be less than 15 characters")
   });
 
-  const onSubmit = (values, { resetForm }) => {
-    addContact(values);
+ const onSubmit = (values, { resetForm }) => {
+    const existingContact = contacts.find(contact => contact.name === values.name || contact.number === values.number);
+    if (existingContact) {
+      setErrorMessage("This contact already exists!");
+      return;
+    }
+    dispatch(addContact(values));
     resetForm();
   };
 
@@ -43,7 +54,8 @@ const ContactForm = ({ addContact }) => {
             <Field type="text" id="number" name="number" className={css.addtext} />
             <ErrorMessage name="number" component="div" className="error" />
           </div>
-          <button className={css.addbutton}>Add Contact</button>
+          {errorMessage && <div className="error">{errorMessage}</div>}
+          <button type="submit" className={css.addbutton}>Add Contact</button>
         </Form>
       </Formik>
     </div>
