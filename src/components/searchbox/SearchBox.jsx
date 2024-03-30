@@ -1,16 +1,3 @@
-/*import React from "react"
-import css from "./SearchBox.module.css"
-
-const SearchBox = () => {
-  return (
-      <div>
-          <p className={css.paragraf}>Find contacts by name</p>
-          <input className={css.searchname} type="text"/>
-    </div>
-  )
-}
-
-export default SearchBox*/
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
