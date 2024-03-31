@@ -5,11 +5,10 @@ import css from "./SearchBox.module.css";
 
 const SearchBox = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectNameFilter);
+  const nameFilter = useSelector(selectNameFilter);
 
   const handleChange = (event) => {
     dispatch(changeFilter(event.target.value));
-    console.log(111);
   };
 
   return (
@@ -18,7 +17,8 @@ const SearchBox = () => {
       <input 
         className={css.searchname} 
         type="text" 
-        value={filter}
+        placeholder="Search..."
+        value={nameFilter}
         onChange={handleChange}
       />
     </div>
@@ -26,3 +26,4 @@ const SearchBox = () => {
 };
 
 export default SearchBox;
+
