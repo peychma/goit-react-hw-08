@@ -16,12 +16,13 @@ const ContactList = () => {
   return (
     <div>
       <ul className={css.contactlist}>
-        {filteredContacts.map(contact => (
-          <Contact key={contact.id} contact={contact}/>
-        ))}
+      {filteredContacts.map(contact => (
+      <Contact key={contact.id} contact={contact} />
+      ))}
       </ul>
     </div>
   );
 };
 
 export default ContactList;
+
