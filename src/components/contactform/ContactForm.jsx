@@ -3,8 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css"
 import { useDispatch, useSelector } from "react-redux";
-import { selectVisibleContacts } from "../../redux/contactsSlice";
-import { addContact } from "../../redux/contactsOps";
+import { selectVisibleContacts } from "../../redux/contacts/selectors";
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactForm = () => {
   const dispatch = useDispatch();
