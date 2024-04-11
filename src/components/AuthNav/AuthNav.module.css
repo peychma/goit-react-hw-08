@@ -1,0 +1,14 @@
+.link {
+    text-decoration: none;
+    color: plum;
+    font-size: 20px;
+}
+.linkdiv {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;  
+}
+.active {
+    color: blueviolet;
+    text-decoration: none;
+}
