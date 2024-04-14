@@ -1,8 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-
 export const fetchContacts = createAsyncThunk("contacts/fetchAll",
     async (_, thunkAPI) => {
         try {
@@ -39,6 +37,21 @@ export const deleteContact = createAsyncThunk(
       return id;
     } catch (error) {
       console.error('deleteContact error:', error);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const logOut = createAsyncThunk(
+  'auth/logout', // Назва дії
+  async (_, thunkAPI) => {
+    try {
+      // Робите запит на виход
+      await axios.post('/logout');
+      // Повертаєте дані про вихід, якщо необхідно
+      return 'Logged out successfully';
+    } catch (error) {
+      // В разі помилки повертаємо її
       return thunkAPI.rejectWithValue(error.message);
     }
   }
